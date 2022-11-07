@@ -1,20 +1,17 @@
 import { z } from "zod";
+import { Fields, IdlType } from "./types";
 
 import sample from "../examples/xnft.json";
 
 const Accounts = z.optional(
   z.array(
     z.object({
-      name: z.string(), // FIXME:
+      name: z.string({ description: "Name of the program account type" }),
       type: z.object({
-        kind: z.string(), // FIXME:
-        fields: z.array(
-          z.object({
-            name: z.string(), // FIXME:
-            docs: z.optional(z.array(z.string())),
-            // type: z.string(),
-          })
-        ),
+        kind: z.string({
+          description: "The kind of custom serializable type",
+        }),
+        fields: Fields,
       }),
     })
   )
@@ -24,7 +21,7 @@ const Constants = z.optional(
   z.array(
     z.object({
       name: z.string({ description: "Name of the constant variable" }),
-      // type: z.string(), // FIXME:
+      type: z.any(), // FIXME:
       value: z.string(), // FIXME:
     }),
     { description: "Constant values defined within the smart contract" }
@@ -45,13 +42,7 @@ const Events = z.optional(
   z.array(
     z.object({
       name: z.string(), // FIXME:
-      fields: z.array(
-        z.object({
-          name: z.string(), // FIXME:
-          // type: z.string(), // FIXME:
-          index: z.boolean(),
-        })
-      ),
+      fields: Fields,
     })
   )
 );
@@ -70,7 +61,7 @@ const Instructions = z.array(
     args: z.array(
       z.object({
         name: z.string(), // FIXME:
-        // type: z.string(), // FIXME:
+        type: z.any(), // FIXME:
       })
     ),
   })
@@ -88,17 +79,7 @@ const Types = z.optional(
   z.array(
     z.object({
       name: z.string(), // FIXME:
-      type: z.object({
-        kind: z.string(), // FIXME:
-        fields: z.optional(
-          z.array(
-            z.object({
-              name: z.string(), // FIXME:
-              // type: z.string(), // FIXME:
-            })
-          )
-        ),
-      }),
+      type: IdlType,
     })
   )
 );
