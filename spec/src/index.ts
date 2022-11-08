@@ -1,77 +1,69 @@
 import { z } from "zod";
-import { Fields, IdlType } from "./types";
+import {
+  IdlTypeDefSchema,
+  StructTypeSchema,
+  IdlTypeSchema,
+  IdlInstructionAccountSchema,
+  IdlInstructionArgSchema
+} from "./types";
 
 import sample from "../examples/xnft.json";
+import { Idl, IdlAccountDef, IdlConstant, IdlErrorCode, IdlEvent, IdlInstruction } from "./idl";
 
-const Accounts = z.optional(
-  z.array(
-    z.object({
-      name: z.string({ description: "Name of the program account type" }),
-      type: z.object({
-        kind: z.string({
-          description: "The kind of custom serializable type",
-        }),
-        fields: Fields,
-      }),
-    })
-  )
+const Accounts: z.ZodSchema<IdlAccountDef[]> = z.array(
+  z.object({
+    name: z.string({ description: "Name of the program account type" }),
+    type: StructTypeSchema,
+    docs: z.optional(z.array(z.string()))
+  })
 );
 
-const Constants = z.optional(
+const Constants: z.ZodSchema<IdlConstant[]> =
   z.array(
     z.object({
       name: z.string({ description: "Name of the constant variable" }),
-      type: z.any(), // FIXME:
-      value: z.string(), // FIXME:
+      type: IdlTypeSchema,
+      value: z.string(),
     }),
     { description: "Constant values defined within the smart contract" }
   )
-);
 
-const Errors = z.optional(
+const Errors: z.ZodSchema<IdlErrorCode[]> =
   z.array(
     z.object({
-      code: z.number(), // FIXME:
-      name: z.string(), // FIXME:
-      msg: z.optional(z.string()), // FIXME:
+      code: z.number(),
+      name: z.string(),
+      msg: z.optional(z.string()),
     })
   )
-);
 
-const Events = z.optional(
+const Events: z.ZodSchema<IdlEvent[]> =
   z.array(
     z.object({
-      name: z.string(), // FIXME:
-      fields: Fields,
+      name: z.string(),
+      fields: z.array(z.object({
+        name: z.string(),
+        type: IdlTypeSchema,
+        index: z.boolean(),
+      })),
     })
-  )
-);
+  );
 
-const Instructions = z.array(
+const Instructions: z.ZodSchema<IdlInstruction[]> = z.array(
   z.object({
-    name: z.string(), // FIXME:
+    name: z.string(),
     docs: z.optional(z.array(z.string())),
-    accounts: z.array(
-      z.object({
-        name: z.string(), // FIXME:
-        isMut: z.boolean(),
-        isSigner: z.boolean(),
-      })
-    ),
-    args: z.array(
-      z.object({
-        name: z.string(), // FIXME:
-        type: z.any(), // FIXME:
-      })
-    ),
+    accounts: z.array(IdlInstructionAccountSchema),
+    args: z.array(IdlInstructionArgSchema),
+    defaultOptionalAccounts: z.optional(z.boolean()),
   })
 );
 
-const Metadata = z.optional(
+const Metadata =
   z.object({
     address: z.optional(z.string()),
-  })
-);
+    origin: z.optional(z.string()),
+  });
 
 const Name = z.string({ description: "Name of the smart contract" });
 
@@ -79,7 +71,7 @@ const Types = z.optional(
   z.array(
     z.object({
       name: z.string(), // FIXME:
-      type: IdlType,
+      type: IdlTypeDefSchema,
     })
   )
 );
@@ -93,16 +85,16 @@ const Version = z
     "Invalid semantic version format"
   );
 
-const IdlSchema = z.object({
+const IdlSchema: z.ZodSchema<Idl> = z.object({
   version: Version,
   name: Name,
-  constants: Constants,
   instructions: Instructions,
-  accounts: Accounts,
-  types: Types,
-  events: Events,
-  errors: Errors,
-  metadata: Metadata,
+  accounts: Accounts.optional(),
+  errors: Errors.optional(),
+  types: Types.optional(),
+  events: Events.optional(),
+  constants: Constants.optional(),
+  metadata: Metadata.optional(),
 });
 
 export default IdlSchema;
