@@ -9,8 +9,8 @@ import type {
   IdlTypeDefTyEnum,
   IdlTypeDefTyStruct,
   IdlTypeOption,
-  IdlTypeVec,
-} from "./idl";
+  IdlTypeVec
+} from "../types/index";
 
 // -----------------
 // Literal types
