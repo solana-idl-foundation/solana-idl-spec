@@ -1,3 +1,7 @@
+/**
+ * Types, both literal and program-defined, that
+ * can be used in a valid IDL
+ */
 export type IdlType =
     | "bool"
     | "u8"

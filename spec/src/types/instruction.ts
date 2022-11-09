@@ -33,11 +33,16 @@ export type IdlInstruction = {
     returns?: IdlType;
 };
 
+/**
+ * This describes an Instruction Account, not a program-defined
+ * account for parsing on-chain state.
+ */
 export type IdlAccount = {
     name: string;
     isMut: boolean;
     isSigner: boolean;
     docs?: string[];
+    // FIXME: add documentation on what these do
     relations?: string[];
     pda?: IdlPda;
 };
@@ -52,9 +57,9 @@ export type IdlAccounts = {
 export type IdlAccountItem = IdlAccount | IdlAccounts;
 
 
+// FIXME: add documentation on what these do
 export type IdlPda = {
     seeds: IdlSeed[];
     programId?: IdlSeed;
 };
-
 export type IdlSeed = any; // TODO

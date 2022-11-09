@@ -1,3 +1,4 @@
+// Generic helper types
 import { IdlType } from "./type";
 
 export type IdlField = {

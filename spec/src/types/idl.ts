@@ -7,15 +7,13 @@ import { IdlAccountDef } from "./accounts";
 import { IdlConstant } from "./constants";
 import { IdlState } from "./state";
 
-export * from './instruction';
-export * from "./error";
-export * from './metadata'
-export * from "./events";
-export * from "./definedTypes";
-export * from "./accounts";
-export * from "./constants";
-export * from "./state";
-
+/**
+ * Describes how to construct instructions, interpret state
+ * and index logged events for a program executing on the
+ * Solana Virtual Machine (Sealevel runtime).
+ * 
+ * Documentation for named types is provided in their files
+ */
 export type Idl = {
     /**
      * Version of the contract

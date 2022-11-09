@@ -1,14 +1,5 @@
 import { IdlType } from './type';
 
-export type IdlEventField = {
-    name: string;
-    type: IdlType;
-    /**
-     * If index is true, then this information should be saved
-     */
-    index: boolean;
-};
-
 /**
  * Event information that should be indexed by the program
  */
@@ -22,4 +13,13 @@ export type IdlEvent = {
      */
     name: string;
     fields: IdlEventField[];
+};
+
+export type IdlEventField = {
+    name: string;
+    type: IdlType;
+    /**
+     * If index is true, then this information should be saved
+     */
+    index: boolean;
 };
