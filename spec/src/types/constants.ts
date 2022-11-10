@@ -1,4 +1,3 @@
-
 import { IdlType } from "./type";
 
 /**
@@ -6,7 +5,7 @@ import { IdlType } from "./type";
  * by a name value
  */
 export type IdlConstant = {
-    name: string;
-    type: IdlType;
-    value: string;
+  name: string;
+  type: IdlType;
+  value: string;
 };

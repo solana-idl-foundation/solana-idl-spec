@@ -15,7 +15,14 @@ import {
   IdlInstructionArgSchema,
 } from "./types";
 
-import { Idl, IdlAccountDef, IdlConstant, IdlErrorCode, IdlEvent, IdlInstruction } from "../types/index";
+import {
+  Idl,
+  IdlAccountDef,
+  IdlConstant,
+  IdlErrorCode,
+  IdlEvent,
+  IdlInstruction,
+} from "../types/index";
 
 export const AccountsSchema: z.ZodSchema<IdlAccountDef[]> = z.array(
   z.object({
@@ -25,37 +32,35 @@ export const AccountsSchema: z.ZodSchema<IdlAccountDef[]> = z.array(
   })
 );
 
-export const ConstantsSchema: z.ZodSchema<IdlConstant[]> =
-  z.array(
-    z.object({
-      name: z.string({ description: "Name of the constant variable" }),
-      type: IdlTypeSchema,
-      value: z.string(),
-    }),
-    { description: "Constant values defined within the smart contract" }
-  )
+export const ConstantsSchema: z.ZodSchema<IdlConstant[]> = z.array(
+  z.object({
+    name: z.string({ description: "Name of the constant variable" }),
+    type: IdlTypeSchema,
+    value: z.string(),
+  }),
+  { description: "Constant values defined within the smart contract" }
+);
 
-export const ErrorsSchema: z.ZodSchema<IdlErrorCode[]> =
-  z.array(
-    z.object({
-      code: z.number(),
-      name: z.string(),
-      msg: z.optional(z.string()),
-    })
-  )
+export const ErrorsSchema: z.ZodSchema<IdlErrorCode[]> = z.array(
+  z.object({
+    code: z.number(),
+    name: z.string(),
+    msg: z.optional(z.string()),
+  })
+);
 
-export const EventsSchema: z.ZodSchema<IdlEvent[]> =
-  z.array(
-    z.object({
-      name: z.string(),
-      fields: z.array(z.object({
+export const EventsSchema: z.ZodSchema<IdlEvent[]> = z.array(
+  z.object({
+    name: z.string(),
+    fields: z.array(
+      z.object({
         name: z.string(),
         type: IdlTypeSchema,
         index: z.boolean(),
       })
-      ),
-    })
-  );
+    ),
+  })
+);
 
 export const InstructionsSchem: z.ZodSchema<IdlInstruction[]> = z.array(
   z.object({
@@ -67,14 +72,15 @@ export const InstructionsSchem: z.ZodSchema<IdlInstruction[]> = z.array(
   })
 );
 
-export const MetadataSchema =
-  z.object({
-    address: z.optional(z.string()),
-    origin: z.optional(z.string()),
-    chainId: z.optional(z.string())
-  });
+export const MetadataSchema = z.object({
+  address: z.optional(z.string()),
+  origin: z.optional(z.string()),
+  chainId: z.optional(z.string()),
+});
 
-export const NameSchema = z.string({ description: "Name of the smart contract" });
+export const NameSchema = z.string({
+  description: "Name of the smart contract",
+});
 
 export const TypesSchema = z.optional(
   z.array(

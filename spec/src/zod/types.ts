@@ -9,7 +9,7 @@ import type {
   IdlTypeDefTyEnum,
   IdlTypeDefTyStruct,
   IdlTypeOption,
-  IdlTypeVec
+  IdlTypeVec,
 } from "../types/index";
 
 // -----------------
