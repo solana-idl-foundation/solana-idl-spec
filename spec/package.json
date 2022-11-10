@@ -2,8 +2,11 @@
   "name": "@solana-idl-foundation/spec",
   "license": "Apache-2.0",
   "version": "0.1.0",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "fmt": "prettier ./*.json \"*/**/*.{js,ts,tsx,css}\" -c",
+    "fmt:fix": "prettier ./*.json \"*/**/*.{js,ts,tsx,css}\" -w"
   },
   "dependencies": {
     "zod": "^3.19.1"
