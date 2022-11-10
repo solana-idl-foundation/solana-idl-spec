@@ -1,20 +1,4 @@
 import { z } from "zod";
-import type {
-  IdlAccountDef,
-  IdlConstant,
-  IdlErrorCode,
-  IdlEvent,
-  IdlInstruction,
-  Idl,
-} from "./idl";
-import {
-  IdlTypeDefSchema,
-  StructTypeSchema,
-  IdlTypeSchema,
-  IdlInstructionAccountSchema,
-  IdlInstructionArgSchema,
-} from "./types";
-
 import {
   Idl,
   IdlAccountDef,
@@ -23,6 +7,13 @@ import {
   IdlEvent,
   IdlInstruction,
 } from "../types/index";
+import {
+  IdlTypeDefSchema,
+  StructTypeSchema,
+  IdlTypeSchema,
+  IdlInstructionAccountSchema,
+  IdlInstructionArgSchema,
+} from "./types";
 
 export const AccountsSchema: z.ZodSchema<IdlAccountDef[]> = z.array(
   z.object({
