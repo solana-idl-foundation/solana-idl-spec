@@ -2,17 +2,23 @@
   "name": "@solana-idl-foundation/spec",
   "license": "Apache-2.0",
   "version": "0.1.0",
-  "main": "./build/index.js",
-  "types": "./build/index.d.ts",
+  "main": "./build/zod/index.js",
+  "types": "./build/zod/index.d.ts",
   "scripts": {
-    "fmt": "prettier ./*.json \"*/**/*.{js,ts,tsx,css}\" -c",
-    "fmt:fix": "prettier ./*.json \"*/**/*.{js,ts,tsx,css}\" -w"
+    "build": "tsc",
+    "clean": "rm -rf ./build",
+    "fmt": "prettier ./*.json \"*/**/*.{js,ts}\" -c",
+    "fmt:fix": "prettier ./*.json \"*/**/*.{js,ts}\" -w",
+    "test": "jest"
   },
   "dependencies": {
     "zod": "^3.19.1"
   },
   "devDependencies": {
+    "@jest/globals": "^29.3.1",
+    "jest": "^29.3.1",
     "prettier": "^2.7.1",
+    "ts-jest": "^29.0.3",
     "typescript": "^4.8.4"
   }
 }
