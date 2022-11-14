@@ -10,7 +10,7 @@ import type {
   IdlTypeDefTyStruct,
   IdlTypeOption,
   IdlTypeVec,
-} from "./idl";
+} from "../types/index";
 
 // -----------------
 // Literal types
