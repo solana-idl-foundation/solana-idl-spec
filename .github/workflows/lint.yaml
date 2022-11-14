@@ -20,6 +20,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: yarn
+          cache-dependency-path: spec/yarn.lock
 
       - name: Install Dependencies
         working-directory: spec
