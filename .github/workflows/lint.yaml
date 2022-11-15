@@ -1,0 +1,35 @@
+name: Lint and Test
+
+on:
+  pull_request: {}
+  push:
+    branches: [master]
+
+env:
+  NODE_VERSION: 16
+
+jobs:
+  lint_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: yarn
+          cache-dependency-path: spec/yarn.lock
+
+      - name: Install Dependencies
+        working-directory: spec
+        run: yarn install --frozen-lockfile
+
+      - name: Lint and Format Check
+        working-directory: spec
+        run: yarn fmt && yarn build && yarn clean
+
+      - name: Tests
+        working-directory: spec
+        run: yarn test

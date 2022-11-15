@@ -12,5 +12,6 @@
     "noUnusedParameters": true,
     "allowUnusedLabels": false,
     "allowUnreachableCode": false
-  }
+  },
+  "include": ["./src/**/*.ts"]
 }
