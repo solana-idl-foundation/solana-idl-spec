@@ -5,6 +5,7 @@ import { IdlTypeDefTyStruct } from "./definedTypes";
  */
 export type IdlAccountDef = {
   name: string;
+  discriminator: string;
   docs?: string[];
   type: IdlTypeDefTyStruct; // FIXME: add enum structs
   // FIXME: add account discriminator

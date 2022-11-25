@@ -7,8 +7,8 @@
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf ./build",
-    "fmt": "prettier ./*.json \"*/**/*.{js,ts}\" -c",
-    "fmt:fix": "prettier ./*.json \"*/**/*.{js,ts}\" -w",
+    "fmt": "prettier ./*.json \"*/**/*.{js,ts,json}\" -c",
+    "fmt:fix": "prettier ./*.json \"*/**/*.{js,ts,json}\" -w",
     "test": "jest"
   },
   "dependencies": {

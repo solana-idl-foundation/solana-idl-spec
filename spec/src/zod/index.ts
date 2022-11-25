@@ -7,6 +7,7 @@ import {
   IdlEvent,
   IdlInstruction,
 } from "../types/index";
+import { DISCRIMINATOR_RX, SEMVER_RX } from "./constants";
 import {
   IdlTypeDefSchema,
   StructTypeSchema,
@@ -18,6 +19,7 @@ import {
 export const AccountsSchema: z.ZodSchema<IdlAccountDef[]> = z.array(
   z.object({
     name: z.string({ description: "Name of the program account type" }),
+    discriminator: z.string().regex(DISCRIMINATOR_RX),
     type: StructTypeSchema,
     docs: z.optional(z.array(z.string())),
   })
@@ -43,6 +45,7 @@ export const ErrorsSchema: z.ZodSchema<IdlErrorCode[]> = z.array(
 export const EventsSchema: z.ZodSchema<IdlEvent[]> = z.array(
   z.object({
     name: z.string(),
+    discriminator: z.string().regex(DISCRIMINATOR_RX),
     fields: z.array(
       z.object({
         name: z.string(),
@@ -56,6 +59,7 @@ export const EventsSchema: z.ZodSchema<IdlEvent[]> = z.array(
 export const InstructionsSchem: z.ZodSchema<IdlInstruction[]> = z.array(
   z.object({
     name: z.string(),
+    discriminator: z.string().regex(DISCRIMINATOR_RX),
     docs: z.optional(z.array(z.string())),
     accounts: z.array(IdlInstructionAccountSchema),
     args: z.array(IdlInstructionArgSchema),
@@ -86,10 +90,7 @@ export const VersionSchema = z
   .string({
     description: "Semantic version of the smart contract",
   })
-  .regex(
-    /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/,
-    "Invalid semantic version format"
-  );
+  .regex(SEMVER_RX, "Invalid semantic version format");
 
 const IdlSchema: z.ZodSchema<Idl> = z.object({
   version: VersionSchema,
