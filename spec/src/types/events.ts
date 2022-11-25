@@ -12,6 +12,7 @@ export type IdlEvent = {
    * Events are identified by their discriminator
    */
   name: string;
+  discriminator: number[];
   fields: IdlEventField[];
 };
 

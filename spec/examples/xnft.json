@@ -18,6 +18,7 @@
   "instructions": [
     {
       "name": "createXnft",
+      "discriminator": [232, 16, 8, 240, 20, 109, 214, 66],
       "docs": [
         "Creates all parts of an xNFT instance.",
         "",
@@ -112,6 +113,7 @@
     },
     {
       "name": "updateXnft",
+      "discriminator": [65, 211, 212, 147, 239, 154, 133, 2],
       "docs": [
         "Updates the code of an xNFT.",
         "",
@@ -160,6 +162,7 @@
     },
     {
       "name": "setCurator",
+      "discriminator": [115, 127, 196, 219, 235, 198, 96, 253],
       "docs": ["Assigns a curator public key to the provided xNFT."],
       "accounts": [
         {
@@ -187,6 +190,7 @@
     },
     {
       "name": "verifyCurator",
+      "discriminator": [13, 126, 13, 32, 106, 7, 173, 149],
       "docs": [
         "Verifies the assignment of a curator to an xNFT, signed by the curator authority."
       ],
@@ -206,6 +210,7 @@
     },
     {
       "name": "createReview",
+      "discriminator": [69, 237, 87, 43, 238, 125, 40, 1],
       "docs": [
         "Creates a \"review\" of an xNFT containing a URI to a comment and a 0-5 rating."
       ],
@@ -254,6 +259,7 @@
     },
     {
       "name": "createInstall",
+      "discriminator": [41, 58, 153, 9, 228, 59, 218, 207],
       "docs": [
         "Creates an \"installation\" of an xNFT.",
         "",
@@ -296,6 +302,7 @@
     },
     {
       "name": "createPermissionedInstall",
+      "discriminator": [93, 218, 157, 212, 22, 147, 180, 196],
       "docs": [
         "Creates an \"installation\" of a private xNFT through prior access approval",
         "granted by the xNFT's installation authority."
@@ -336,6 +343,7 @@
     },
     {
       "name": "deleteInstall",
+      "discriminator": [223, 134, 126, 1, 183, 26, 254, 206],
       "docs": ["Closes the install account."],
       "accounts": [
         {
@@ -355,174 +363,12 @@
         }
       ],
       "args": []
-    },
-    {
-      "name": "deleteReview",
-      "docs": [
-        "Closes the review account and removes metrics from xNFT account."
-      ],
-      "accounts": [
-        {
-          "name": "review",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "xnft",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "receiver",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "author",
-          "isMut": false,
-          "isSigner": true
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "setSuspended",
-      "docs": ["Sets the install suspension flag on the xnft."],
-      "accounts": [
-        {
-          "name": "xnft",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "masterToken",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "authority",
-          "isMut": false,
-          "isSigner": true
-        }
-      ],
-      "args": [
-        {
-          "name": "flag",
-          "type": "bool"
-        }
-      ]
-    },
-    {
-      "name": "grantAccess",
-      "docs": [
-        "Creates an access program account that indicates a wallet's",
-        "access permission to install a private xNFT."
-      ],
-      "accounts": [
-        {
-          "name": "xnft",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "wallet",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "access",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "authority",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "systemProgram",
-          "isMut": false,
-          "isSigner": false
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "revokeAccess",
-      "docs": [
-        "Closes the access program account for a given wallet on a private xNFT,",
-        "effectively revoking their permission to create installations of the xNFT."
-      ],
-      "accounts": [
-        {
-          "name": "xnft",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "wallet",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "access",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "authority",
-          "isMut": true,
-          "isSigner": true
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "transfer",
-      "docs": ["Transfer the xNFT to the provided designation wallet."],
-      "accounts": [
-        {
-          "name": "xnft",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "masterMint",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "source",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "destination",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "recipient",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "authority",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "tokenProgram",
-          "isMut": false,
-          "isSigner": false
-        }
-      ],
-      "args": []
     }
   ],
   "accounts": [
     {
       "name": "Access",
+      "discriminator": [117, 154, 108, 210, 202, 83, 96, 222],
       "type": {
         "kind": "struct",
         "fields": [
@@ -555,6 +401,7 @@
     },
     {
       "name": "Install",
+      "discriminator": [201, 232, 241, 203, 220, 68, 89, 47],
       "type": {
         "kind": "struct",
         "fields": [
@@ -590,6 +437,7 @@
     },
     {
       "name": "Review",
+      "discriminator": [124, 63, 203, 215, 226, 30, 222, 15],
       "type": {
         "kind": "struct",
         "fields": [
@@ -627,6 +475,7 @@
     },
     {
       "name": "Xnft",
+      "discriminator": [176, 228, 228, 165, 151, 254, 88, 222],
       "type": {
         "kind": "struct",
         "fields": [
@@ -999,57 +848,8 @@
   ],
   "events": [
     {
-      "name": "AccessGranted",
-      "fields": [
-        {
-          "name": "wallet",
-          "type": "publicKey",
-          "index": false
-        },
-        {
-          "name": "xnft",
-          "type": "publicKey",
-          "index": false
-        }
-      ]
-    },
-    {
-      "name": "InstallationCreated",
-      "fields": [
-        {
-          "name": "installer",
-          "type": "publicKey",
-          "index": false
-        },
-        {
-          "name": "xnft",
-          "type": "publicKey",
-          "index": false
-        }
-      ]
-    },
-    {
-      "name": "ReviewCreated",
-      "fields": [
-        {
-          "name": "author",
-          "type": "publicKey",
-          "index": false
-        },
-        {
-          "name": "rating",
-          "type": "u8",
-          "index": false
-        },
-        {
-          "name": "xnft",
-          "type": "publicKey",
-          "index": false
-        }
-      ]
-    },
-    {
       "name": "XnftUpdated",
+      "discriminator": [94, 250, 56, 174, 183, 63, 43, 169],
       "fields": [
         {
           "name": "xnft",
