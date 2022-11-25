@@ -18,7 +18,7 @@ export type IdlInstruction = {
   /**
    * Sighash discriminator of the isntruction
    */
-  discriminator: string;
+  discriminator: number[];
   /**
    * Developer documentation for the instruction
    */

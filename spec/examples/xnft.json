@@ -18,7 +18,7 @@
   "instructions": [
     {
       "name": "createXnft",
-      "discriminator": "e81008f0146dd642",
+      "discriminator": [232, 16, 8, 240, 20, 109, 214, 66],
       "docs": [
         "Creates all parts of an xNFT instance.",
         "",
@@ -113,7 +113,7 @@
     },
     {
       "name": "updateXnft",
-      "discriminator": "41d3d493ef9a8502",
+      "discriminator": [65, 211, 212, 147, 239, 154, 133, 2],
       "docs": [
         "Updates the code of an xNFT.",
         "",
@@ -162,7 +162,7 @@
     },
     {
       "name": "setCurator",
-      "discriminator": "737fc4dbebc660fd",
+      "discriminator": [115, 127, 196, 219, 235, 198, 96, 253],
       "docs": ["Assigns a curator public key to the provided xNFT."],
       "accounts": [
         {
@@ -190,7 +190,7 @@
     },
     {
       "name": "verifyCurator",
-      "discriminator": "0d7e0d206a07ad95",
+      "discriminator": [13, 126, 13, 32, 106, 7, 173, 149],
       "docs": [
         "Verifies the assignment of a curator to an xNFT, signed by the curator authority."
       ],
@@ -210,7 +210,7 @@
     },
     {
       "name": "createReview",
-      "discriminator": "45ed572bee7d2801",
+      "discriminator": [69, 237, 87, 43, 238, 125, 40, 1],
       "docs": [
         "Creates a \"review\" of an xNFT containing a URI to a comment and a 0-5 rating."
       ],
@@ -259,7 +259,7 @@
     },
     {
       "name": "createInstall",
-      "discriminator": "293a9909e43bdacf",
+      "discriminator": [41, 58, 153, 9, 228, 59, 218, 207],
       "docs": [
         "Creates an \"installation\" of an xNFT.",
         "",
@@ -302,7 +302,7 @@
     },
     {
       "name": "createPermissionedInstall",
-      "discriminator": "5dda9dd41693b4c4",
+      "discriminator": [93, 218, 157, 212, 22, 147, 180, 196],
       "docs": [
         "Creates an \"installation\" of a private xNFT through prior access approval",
         "granted by the xNFT's installation authority."
@@ -343,7 +343,7 @@
     },
     {
       "name": "deleteInstall",
-      "discriminator": "df867e01b71afece",
+      "discriminator": [223, 134, 126, 1, 183, 26, 254, 206],
       "docs": ["Closes the install account."],
       "accounts": [
         {
@@ -368,7 +368,7 @@
   "accounts": [
     {
       "name": "Access",
-      "discriminator": "759a6cd2ca5360de",
+      "discriminator": [117, 154, 108, 210, 202, 83, 96, 222],
       "type": {
         "kind": "struct",
         "fields": [
@@ -401,7 +401,7 @@
     },
     {
       "name": "Install",
-      "discriminator": "c9e8f1cbdc44592f",
+      "discriminator": [201, 232, 241, 203, 220, 68, 89, 47],
       "type": {
         "kind": "struct",
         "fields": [
@@ -437,7 +437,7 @@
     },
     {
       "name": "Review",
-      "discriminator": "7c3fcbd7e21ede0f",
+      "discriminator": [124, 63, 203, 215, 226, 30, 222, 15],
       "type": {
         "kind": "struct",
         "fields": [
@@ -475,7 +475,7 @@
     },
     {
       "name": "Xnft",
-      "discriminator": "b0e4e4a597fe58de",
+      "discriminator": [176, 228, 228, 165, 151, 254, 88, 222],
       "type": {
         "kind": "struct",
         "fields": [
@@ -849,7 +849,7 @@
   "events": [
     {
       "name": "XnftUpdated",
-      "discriminator": "5efa38aeb73f2ba9",
+      "discriminator": [94, 250, 56, 174, 183, 63, 43, 169],
       "fields": [
         {
           "name": "xnft",
