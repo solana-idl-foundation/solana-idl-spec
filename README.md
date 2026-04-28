@@ -1,3 +1,9 @@
+> [!NOTE]
+> This repository is no longer actively maintained.
+>
+> The canonical Solana IDL specification now lives at:
+> https://github.com/solana-foundation/idl-spec
+
 <div align="center">
   <h1>Solana IDL Spec</h1>
   <p><strong>Standardizing a Solana IDL Standard, originally built by Coral's Anchor Framework.</strong></p>
